@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Generate Extension Icons</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        canvas { border: 1px solid #ccc; margin: 10px; }
+        .icon-set { margin: 20px 0; }
+    </style>
+</head>
+<body>
+    <h1>📅 Generate Calendar Extension Icons</h1>
+    <p>Right-click on each canvas and "Save image as..." to download the icons.</p>
+    
+    <div class="icon-set">
+        <h3>16x16 Icon</h3>
+        <canvas id="icon16" width="16" height="16"></canvas>
+        
+        <h3>48x48 Icon</h3>
+        <canvas id="icon48" width="48" height="48"></canvas>
+        
+        <h3>128x128 Icon</h3>
+        <canvas id="icon128" width="128" height="128"></canvas>
+    </div>
+
+    <script>
+        function drawCalendarIcon(canvas, size) {
+            const ctx = canvas.getContext('2d');
+            
+            // Clear canvas
+            ctx.clearRect(0, 0, size, size);
+            
+            // Scale factors
+            const scale = size / 128;
+            
+            // Background circle
+            ctx.fillStyle = '#4285f4';
+            ctx.beginPath();
+            ctx.arc(size/2, size/2, size/2 - 2, 0, 2 * Math.PI);
+            ctx.fill();
+            
+            // Calendar base
+            ctx.fillStyle = 'white';
+            ctx.fillRect(size * 0.2, size * 0.3, size * 0.6, size * 0.5);
+            
+            // Calendar header
+            ctx.fillStyle = '#ea4335';
+            ctx.fillRect(size * 0.2, size * 0.3, size * 0.6, size * 0.15);
+            
+            // Calendar rings (top)
+            ctx.fillStyle = '#34a853';
+            const ringWidth = size * 0.08;
+            const ringHeight = size * 0.2;
+            ctx.fillRect(size * 0.3, size * 0.2, ringWidth, ringHeight);
+            ctx.fillRect(size * 0.62, size * 0.2, ringWidth, ringHeight);
+            
+            // Calendar grid lines (simplified for small sizes)
+            if (size >= 48) {
+                ctx.strokeStyle = '#dadce0';
+                ctx.lineWidth = 1;
+                
+                // Horizontal lines
+                for (let i = 1; i < 3; i++) {
+                    const y = size * 0.45 + (i * size * 0.1);
+                    ctx.beginPath();
+                    ctx.moveTo(size * 0.25, y);
+                    ctx.lineTo(size * 0.75, y);
+                    ctx.stroke();
+                }
+                
+                // Vertical lines
+                for (let i = 1; i < 3; i++) {
+                    const x = size * 0.3 + (i * size * 0.15);
+                    ctx.beginPath();
+                    ctx.moveTo(x, size * 0.45);
+                    ctx.lineTo(x, size * 0.75);
+                    ctx.stroke();
+                }
+            }
+            
+            // Date number
+            if (size >= 32) {
+                ctx.fillStyle = '#202124';
+                ctx.font = `bold ${size * 0.15}px Arial`;
+                ctx.textAlign = 'center';
+                ctx.fillText('15', size * 0.4, size * 0.6);
+            }
+        }
+
+        // Generate all icons
+        drawCalendarIcon(document.getElementById('icon16'), 16);
+        drawCalendarIcon(document.getElementById('icon48'), 48);
+        drawCalendarIcon(document.getElementById('icon128'), 128);
+
+        // Add download functionality
+        document.querySelectorAll('canvas').forEach(canvas => {
+            canvas.style.cursor = 'pointer';
+            canvas.addEventListener('click', function() {
+                const link = document.createElement('a');
+                link.download = this.id + '.png';
+                link.href = this.toDataURL();
+                link.click();
+            });
+        });
+    </script>
+</body>
+</html>

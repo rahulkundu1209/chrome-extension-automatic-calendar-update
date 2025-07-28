@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calendar Event Detector</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup-container">
+    <header class="popup-header">
+      <h1>📅 Calendar Event Detector</h1>
+      <p>Automatically detect and add email events to Google Calendar</p>
+    </header>
+
+    <main class="popup-main">
+      <div class="status-section">
+        <h2>Status</h2>
+        <div id="connection-status" class="status-item">
+          <span class="status-indicator" id="status-dot"></span>
+          <span id="status-text">Checking connection...</span>
+        </div>
+      </div>
+
+      <div class="controls-section">
+        <h2>Settings</h2>
+        
+        <div class="setting-item">
+          <label>
+            <input type="checkbox" id="auto-detect" checked>
+            <span class="checkmark"></span>
+            Auto-detect events in emails
+          </label>
+        </div>
+
+        <div class="setting-item">
+          <label>
+            <input type="checkbox" id="show-notifications" checked>
+            <span class="checkmark"></span>
+            Show detection notifications
+          </label>
+        </div>
+
+        <div class="setting-item">
+          <label for="default-duration">Default event duration:</label>
+          <select id="default-duration">
+            <option value="30">30 minutes</option>
+            <option value="60" selected>1 hour</option>
+            <option value="90">1.5 hours</option>
+            <option value="120">2 hours</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="actions-section">
+        <button id="scan-current-email" class="primary-btn">
+          🔍 Scan Current Email
+        </button>
+        
+        <button id="authorize-calendar" class="secondary-btn">
+          🔐 Authorize Google Calendar
+        </button>
+      </div>
+
+      <div class="info-section">
+        <h2>How it works</h2>
+        <ul>
+          <li>Open Gmail and navigate to an email</li>
+          <li>The extension automatically scans for calendar events</li>
+          <li>Click "Add to Calendar" when events are detected</li>
+          <li>Events are added to your Google Calendar</li>
+        </ul>
+      </div>
+    </main>
+
+    <footer class="popup-footer">
+      <p>Version 1.0 | <a href="#" id="help-link">Need help?</a></p>
+    </footer>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

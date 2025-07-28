@@ -1,0 +1,40 @@
+{
+  "manifest_version": 3,
+  "name": "Automatic Calendar Update",
+  "version": "1.0",
+  "description": "Automatically detect calendar events in emails and add them to Google Calendar",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "identity"
+  ],
+  "host_permissions": [
+    "https://mail.google.com/*",
+    "https://www.googleapis.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://mail.google.com/*"],
+      "js": ["content.js"],
+      "css": ["styles.css"]
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Calendar Event Detector"
+  },
+  "oauth2": {
+    "client_id": "957331717398-47c8lt6ji5r0ouhvm5rnkt8ol7382pcf.apps.googleusercontent.com",
+    "scopes": [
+      "https://www.googleapis.com/auth/calendar.events"
+    ]
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}

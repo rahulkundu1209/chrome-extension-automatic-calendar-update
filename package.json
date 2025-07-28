@@ -1,0 +1,34 @@
+{
+  "name": "automatic-calendar-update",
+  "version": "1.0.0",
+  "description": "Chrome extension that automatically detects calendar events in Gmail and adds them to Google Calendar",
+  "main": "background.js",
+  "scripts": {
+    "build": "echo 'Building Chrome extension...' && echo 'Extension ready for testing!'",
+    "dev": "echo 'Development mode - Load unpacked extension in Chrome'",
+    "test": "echo 'Open Gmail and test event detection functionality'"
+  },
+  "keywords": [
+    "chrome-extension",
+    "gmail",
+    "google-calendar",
+    "calendar-events",
+    "email-automation",
+    "productivity"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/automatic-calendar-update"
+  },
+  "devDependencies": {
+    "web-ext": "^7.8.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "dependencies": {
+    "compromise": "^14.14.4"
+  }
+}
