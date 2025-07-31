@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "Gmail to Calendar",
+  "version": "1.0.0",
+  "description": "Automatically add Gmail events to Google Calendar with smart event detection",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "identity"
+  ],
+  "host_permissions": [
+    "*://mail.google.com/*",
+    "https://www.googleapis.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://mail.google.com/*"],
+      "js": ["content.js"],
+      "css": ["content.css"]
+    }
+  ],
+  "action": {
+    "default_popup": "index.html",
+    "default_title": "Gmail to Calendar"
+  },
+  "oauth2": {
+    "client_id": "957331717398-2jkhv73monitjupphj47bjpru4c5o9m0.apps.googleusercontent.com",
+    "scopes": ["https://www.googleapis.com/auth/calendar"]
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
