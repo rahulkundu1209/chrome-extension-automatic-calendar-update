@@ -29,6 +29,7 @@
     "node": ">=14.0.0"
   },
   "dependencies": {
-    "compromise": "^14.14.4"
+    "compromise": "^14.14.4",
+    "compromise-dates": "^3.7.1"
   }
 }
